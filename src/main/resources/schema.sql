@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS hotel (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    country VARCHAR(100) NOT NULL,
+    stars INT NOT NULL CHECK (stars >= 1 AND stars <= 5),
+    description TEXT
+);
