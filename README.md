@@ -49,15 +49,15 @@ El desarrollo se guiará por etapas incrementales, priorizando la implementació
 
 ### Fase 1: Setup y Configuración ⚙️
 
-1. Crear proyecto Spring Boot.
+✅ 1. Crear proyecto Spring Boot.
 
-2. Configurar dependencias clave (e.g., Spring Data JPA, H2/PostgreSQL, Spring Web).
+✅ 2. Configurar dependencias clave (e.g., Spring Data JPA, H2/PostgreSQL, Spring Web).
 
-3. Definir la estructura de paquetes inicial (`model`, `repository`, `service`, `controller`).
+✅ 3. Definir la estructura de paquetes inicial (`model`, `repository`, `service`, `controller`).
 
 ### Fase 2: Módulo de Hoteles 🏨
 
-1. Implementar la **Entidad `Hotel`**.
+✅ 1. Implementar la **Entidad `Hotel`**.
 
 2. Crear `Repository`, `Service` y `Controller` para `Hotel`.
 
