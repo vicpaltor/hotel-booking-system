@@ -108,3 +108,36 @@ El desarrollo se guiará por etapas incrementales, priorizando la implementació
 2. Implementar el sistema de **Reseñas** (`Review`) (calificaciones y comentarios).
 
 3. Desarrollar una **Búsqueda avanzada** para huéspedes (filtrado por servicios, estrellas, etc.).
+
+
+# 📂 Estructura de Paquetes (`com.hotel.booking`)
+
+Esta es la organización modular del proyecto, siguiendo principios de **Separación de Responsabilidades** para facilitar el desarrollo y mantenimiento.
+
+com.hotel.booking
+├── BookingSystemApplication.java  // Clase principal de Spring Boot
+├── config/                        // Configuraciones generales (Security, DataSources, etc.)
+├── domain/                        // **Capa del Dominio** (Modelos de Negocio/Entidades JPA)
+│   ├── hotel/                     // Entidad Hotel y lógica asociada
+│   ├── room/                      // Entidad Room y lógica asociada
+│   ├── guest/                     // Entidad Guest y lógica asociada
+│   ├── booking/                   // Entidad Booking y lógica de fechas/disponibilidad
+│   ├── payment/                   // Entidad Payment
+│   └── review/                    // Entidad Review
+├── dto/                           // **Data Transfer Objects** para comunicación entre capas (entrada/salida de la API)
+├── mapper/                        // Interfaces de MapStruct para conversiones entre DTOs y Entidades
+├── repository/                    // **Capa de Persistencia** (Spring Data Repositories)
+├── service/                       // **Capa de Servicios** (Lógica de Negocio Central, transacciones)
+├── controller/                    // **Capa de Presentación** (REST Controllers, manejo de peticiones HTTP)
+└── exception/                     // Clases y handlers personalizados para el manejo centralizado de errores
+
+# 🧪 Paso C: Verificar configuración de H2
+
+1. Ejecuta la aplicación nuevamente
+2. Abre tu navegador en: http://localhost:8080/h2-console
+En el login de H2, usa:
+
+* JDBC URL: jdbc:h2:mem:hotelbookingdb
+* User Name: sa
+* Password: (dejar vacío)
+* Click en Connect
