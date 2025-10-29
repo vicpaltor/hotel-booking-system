@@ -59,7 +59,7 @@ El desarrollo se guiará por etapas incrementales, priorizando la implementació
 
 ✅ 1. Implementar la **Entidad `Hotel`**.
 
-2. Crear `Repository`, `Service` y `Controller` para `Hotel`.
+⏳ 2. Crear `Repository`, `Service` y `Controller` para `Hotel`.
 
 3. Escribir **Tests completos** para el CRUD básico del `Hotel`.
 
