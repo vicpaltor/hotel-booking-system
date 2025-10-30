@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 /**
@@ -32,11 +33,18 @@ import org.springframework.data.relational.core.mapping.Table;
 
 public class Hotel {
     @Id // <-- Ahora esta @Id corresponde a la importación correcta
+    @Column("id")
     private Long id;
+    @Column("name")
     private String name;
+    @Column("address")
     private String address;
+    @Column("city")
     private String city;
+    @Column("country")
     private String country;
+    @Column("stars")
     private Integer stars;
+    @Column("description")
     private String description;
 }
