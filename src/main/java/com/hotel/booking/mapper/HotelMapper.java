@@ -5,6 +5,8 @@ import com.hotel.booking.dto.CreateHotelRequestDto;
 import com.hotel.booking.dto.HotelDto;
 import org.mapstruct.Mapper;
 
+import java.util.Optional;
+
 /**
  * @Mapper(componentModel = "spring"): Esta es la anotación principal de MapStruct.
  *   - Le indica a MapStruct que procese esta interfaz.
@@ -23,7 +25,6 @@ public interface HotelMapper {
      * @return El DTO correspondiente.
      */
     HotelDto toDto(Hotel hotel);
-
     /**
      * Convierte un DTO de creación (CreateHotelRequest) a una entidad Hotel.
      * De nuevo, los nombres de campo coinciden, por lo que el mapeo es automático.
@@ -31,6 +32,5 @@ public interface HotelMapper {
      * @return La entidad de dominio lista para ser guardada.
      */
     Hotel toEntity(CreateHotelRequestDto request);
-
 
 }

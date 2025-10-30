@@ -3,10 +3,13 @@ package com.hotel.booking.service;
 import com.hotel.booking.domain.hotel.Hotel;
 import com.hotel.booking.dto.CreateHotelRequestDto;
 import com.hotel.booking.dto.HotelDto;
+import com.hotel.booking.exception.HotelNotFoundException;
 import com.hotel.booking.mapper.HotelMapper;
 import com.hotel.booking.repository.HotelRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service // Le dice a Spring que esta clase contiene lógica de negocio
 @RequiredArgsConstructor // Crea un constructor con los campos 'final'
@@ -41,4 +44,32 @@ public class HotelService {
         return hotelMapper.toDto(savedHotelEntity);
 
     }
+
+    public HotelDto getHotelById(Long id){
+//  PRIMERA OPCION
+
+//        Paso 1: Busca el hotel. El resultado es un Optional.
+//        Optional<Hotel> hotelOptional  = hotelRepository.findById(id);
+//
+//        // Paso 2: Si el Optional está vacío, lanza la excepción.
+//        // Si no, devuelve el Hotel que contiene.
+//
+//        Hotel hotel = hotelOptional.orElseThrow(()-> new HotelNotFoundException("Hotel no encontrado con id: "+ id));
+//
+//        return hotelMapper.toDto(hotel);
+    return hotelRepository.findById(id)
+            .map(hotelMapper::toDto)
+            .orElseThrow(()-> new HotelNotFoundException("Hotel no encontrado con id: "+ id));
+    }
+
+    /**
+     ```Las dos versiones son correctas. La primera es más fácil de leer al principio, la segunda es más concisa.
+
+     ### Resumen y Plan de Acción
+
+     1.  **Corrige `HotelNotFoundException`** para que extienda de `RuntimeException`, llame a `super(message)` y tenga la anotación `@ResponseStatus(HttpStatus.NOT_FOUND)`.
+     2.  **Elimina el método `toDtoOpcional`** de tu `HotelMapper`.
+     3.  **Reemplaza tu método `getHotelById` en `HotelService`** con una de las versiones corregidas que te he mostrado.
+     4.  Vuelve a tu test `getHotelById_shouldReturnHotelWhenFound()`, quita el `throws Exception` de la firma y **ejecútalo**. Debería pasar en **verde**.
+     **/
 }

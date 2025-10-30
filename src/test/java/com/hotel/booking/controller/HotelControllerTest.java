@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -73,6 +74,27 @@ public class HotelControllerTest {
                 .andExpect(status().isCreated()) // Esperamos un estado HTTP 201 (Created)
                 .andExpect(jsonPath("$.id", is(1))) // Verificamos el JSON de respuesta
                 .andExpect(jsonPath("$.name", is("Hotel API Test")));
+    }
+
+    @Test
+    void shouldReturn400WhenHotelDataIsInvalid() throws Exception {
+
+        CreateHotelRequestDto invalidRequest = CreateHotelRequestDto.builder()
+                // Vacío (viola @NotBlank)
+                .name("")
+                .city("")
+                .country("")
+                .address("")
+                // Mayor a 5 (viola @Max(5))
+                .stars(6)
+                .build();
+        mockMvc.perform(post("/api/hotels")// Simula un POST a /api/hotels
+                .contentType(MediaType.APPLICATION_JSON)// Le decimos que el cuerpo es JSON
+                .content(objectMapper.writeValueAsString(invalidRequest))) // Convertimos el request a JSON
+                .andExpect(status().isBadRequest()); // 400 Bad Request
+
+
+
     }
 
     // 3. Clase interna estática para definir los mocks
