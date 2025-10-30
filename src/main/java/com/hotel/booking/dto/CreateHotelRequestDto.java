@@ -23,7 +23,7 @@ import jakarta.validation.constraints.NotBlank;
 
 @Value
 @Builder
-public class CreateHotelRequest {
+public class CreateHotelRequestDto {
 
 
     @NotBlank(message = "El nombre no puede estar vacío")

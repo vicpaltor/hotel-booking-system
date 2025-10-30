@@ -1,7 +1,7 @@
 package com.hotel.booking.mapper;
 
 import com.hotel.booking.domain.hotel.Hotel;
-import com.hotel.booking.dto.CreateHotelRequest;
+import com.hotel.booking.dto.CreateHotelRequestDto;
 import com.hotel.booking.dto.HotelDto;
 import org.mapstruct.Mapper;
 
@@ -30,7 +30,7 @@ public interface HotelMapper {
      * @param request El DTO con los datos de entrada.
      * @return La entidad de dominio lista para ser guardada.
      */
-    Hotel toEntity(CreateHotelRequest request);
+    Hotel toEntity(CreateHotelRequestDto request);
 
 
 }

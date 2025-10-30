@@ -1,7 +1,7 @@
 package com.hotel.booking.mapper;
 
 import com.hotel.booking.domain.hotel.Hotel;
-import com.hotel.booking.dto.CreateHotelRequest;
+import com.hotel.booking.dto.CreateHotelRequestDto;
 import com.hotel.booking.dto.HotelDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class HotelMapperTest {
     @Test
     void shouldMapCreateHotelRequestToHotelEntity() {
         // GIVEN
-        CreateHotelRequest request = CreateHotelRequest.builder()
+        CreateHotelRequestDto request = CreateHotelRequestDto.builder()
                 .name("Hotel Económico")
                 .address("Avenida Siempre Viva 742")
                 .city("Shelbyville")
